@@ -56,7 +56,7 @@ export class AppInterceptor implements HttpInterceptor {
       return next.handle(cloneReq).pipe(catchError(err => {
         if (err.status === 401) {
           this.authService.logOut();
-          this.router.navigate(['login']);
+          this.router.navigate(['auth/sigin']);
         } else if (err.status === 400) {
           this.notificationService.error('MI7Dev informa:', err.error.error);
         }

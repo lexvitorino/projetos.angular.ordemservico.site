@@ -1,4 +1,4 @@
-export interface FileModel {
+export interface FilesModel {
   id?: number;
   name?: string;
   path?: string;

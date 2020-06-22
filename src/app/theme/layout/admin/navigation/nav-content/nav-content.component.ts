@@ -1,8 +1,9 @@
-import { AuthenticationService } from './../../../../../site/authentication/authentication.service';
 import { Location } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, EventEmitter, NgZone, OnInit, Output, ViewChild } from '@angular/core';
 import { NextConfig } from '../../../../../app-config';
 import { NavigationItem } from '../navigation';
+import { AuthenticationModel } from './../../../../../site/authentication/authentication.model';
+import { AuthenticationService } from './../../../../../site/authentication/authentication.service';
 
 @Component({
   selector: 'app-nav-content',
@@ -19,6 +20,7 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   public scrollWidth: any;
   public windowWidth: number;
   public isNavProfile: boolean;
+  public authModel: AuthenticationModel;
 
   @Output() onNavMobCollapse = new EventEmitter();
 
@@ -26,10 +28,10 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   @ViewChild('navbarWrapper', { static: false }) navbarWrapper: ElementRef;
 
   constructor(
-    public nav: NavigationItem,
-    public authService: AuthenticationService,
     private zone: NgZone,
-    private location: Location
+    private location: Location,
+    public nav: NavigationItem,
+    public authService: AuthenticationService
   ) {
     this.nextConfig = NextConfig.config;
     this.windowWidth = window.innerWidth;
@@ -41,6 +43,8 @@ export class NavContentComponent implements OnInit, AfterViewInit {
     this.contentWidth = 0;
 
     this.isNavProfile = false;
+
+    this.authModel = authService.getLogin();
   }
 
   ngOnInit() {

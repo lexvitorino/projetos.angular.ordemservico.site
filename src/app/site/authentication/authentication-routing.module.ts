@@ -18,14 +18,6 @@ const routes: Routes = [
   {
     path: 'change-password/:email',
     loadChildren: () => import('./auth-change-password/auth-change-password.module').then(module => module.AuthChangePasswordModule)
-  },
-  {
-    path: 'personal-information',
-    loadChildren: () => import('./auth-personal-info/auth-personal-info.module').then(module => module.AuthPersonalInfoModule)
-  },
-  {
-    path: 'profile-settings',
-    loadChildren: () => import('./auth-profile-settings/auth-profile-settings.module').then(module => module.AuthProfileSettingsModule)
   }
 ];
 

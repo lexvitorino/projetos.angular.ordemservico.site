@@ -30,7 +30,7 @@
             </li>
             <li class="notification">
               <div class="media">
-                <img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="Generic placeholder image">
+                <img class="img-radius" src="{{ authModel?.avatar?.url }}" alt="Generic placeholder image">
                 <div class="media-body">
                   <p><strong>Joseph William</strong><span class="n-time text-muted"><i
                         class="icon feather icon-clock m-r-10"></i>10 min</span></p>
@@ -40,7 +40,7 @@
             </li>
             <li class="notification">
               <div class="media">
-                <img class="img-radius" src="assets/images/user/avatar-1.jpg" alt="Generic placeholder image">
+                <img class="img-radius" src="{{ authModel?.avatar?.url }}" alt="Generic placeholder image">
                 <div class="media-body">
                   <p><strong>Sara Soudein</strong><span class="n-time text-muted"><i
                         class="icon feather icon-clock m-r-10"></i>12 min</span></p>
@@ -50,9 +50,9 @@
             </li>
             <li class="notification">
               <div class="media">
-                <img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="Generic placeholder image">
+                <img class="img-radius" src="{{ authModel?.avatar?.url }}" alt="Generic placeholder image">
                 <div class="media-body">
-                  <p><strong>Joseph William</strong><span class="n-time text-muted"><i
+                  <p><strong>{{ authModel?.name }}</strong><span class="n-time text-muted"><i
                         class="icon feather icon-clock m-r-10"></i>30 min</span></p>
                   <p>Prchace New Theme and make payment</p>
                 </div>
@@ -73,14 +73,13 @@
       </a>
       <div class="dropdown-menu dropdown-menu-right profile-notification" ngbDropdownMenu>
         <div class="pro-head">
-          <img src="assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
-          <span>John Doe</span>
+          <img src="{{ authModel?.avatar?.url }}" class="img-radius" alt="User-Profile-Image">
+          <span>{{ authModel?.name }}</span>
           <a href="javascript:" class="dud-logout" title="Logout" (click)="authService.logOut()">
             <i class="feather icon-log-out"></i>
           </a>
         </div>
         <ul class="pro-body">
-          <li><a href="javascript:" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
           <li><a href="javascript:" class="dropdown-item"><i class="feather icon-mail"></i> My Messages</a></li>
           <li><a href="javascript:" class="dropdown-item"><i class="feather icon-lock"></i> Lock Screen</a></li>
         </ul>

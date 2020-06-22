@@ -1,5 +1,3 @@
-import { FileModel } from './../../file/file.model';
-import { FileService } from './../../file/file.service';
 import { AfterViewInit, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,6 +6,8 @@ import { FunctionsService } from '../../../../../theme/shared/services/functions
 import { NotificationsService } from '../../../../../theme/shared/services/notifications.service';
 import { UsersService } from '../users.service';
 import { UsersValidators } from '../users.validators';
+import { FilesModel } from './../../files/files.model';
+import { FilesService } from './../../files/files.service';
 
 @Component({
   selector: 'app-users-form',
@@ -42,7 +42,7 @@ export class UsersFormComponent implements OnInit, AfterViewInit {
     private validators: UsersValidators,
     private notifications: NotificationsService,
     private functions: FunctionsService,
-    private file: FileService,
+    private files: FilesService,
     public service: UsersService,
   ) {
   }
@@ -76,7 +76,9 @@ export class UsersFormComponent implements OnInit, AfterViewInit {
           permission: this.service.data.permission,
           avatar: this.service.data.avatar
         });
-        this.imagemOriginalSrc = res.avatar.path;
+        if (res.avatar) {
+          this.imagemOriginalSrc = res.avatar.path;
+        }
       });
     }
   }
@@ -93,7 +95,7 @@ export class UsersFormComponent implements OnInit, AfterViewInit {
     this.service.data = Object.assign({}, this.service.data, this.formData.value);
 
     if (this.imageName && this.imagemOriginalSrc !== this.imageName) {
-      const avatar: FileModel = await this.saveAvatar();
+      const avatar: FilesModel = await this.saveAvatar();
       if (avatar) {
         this.service.data.avatar_id = avatar.id;
       }
@@ -121,7 +123,7 @@ export class UsersFormComponent implements OnInit, AfterViewInit {
     const promise = new Promise((resolve, reject) => {
       const formData = new FormData();
       formData.append('file', this.imageFile);
-      this.file.create(formData).subscribe((res: FileModel) => {
+      this.files.create(formData).subscribe((res: FilesModel) => {
         if (res.error) {
           this.notifications.error(this.title, res.error);
           reject(res);
