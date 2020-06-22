@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="{{ title }}">
+      <div class="toolbar">
+        <button class="btn btn-icon" (click)="create()" title="Novo">
+          <i class="fa fa-plus mr-1"></i>
+        </button>
+        <button class="btn btn-icon" (click)="edit()" title="Editar">
+          <i class="fa fa-edit mr-1"></i>
+        </button>
+        <button class="btn btn-icon btn-hover-danger" (click)="delete()" title="Excluir">
+          <i class="fa fa-trash mr-1"></i>
+        </button>
+      </div>
+      <table id="dataTable" class="table table-striped row-border table-hover dataTable w-100">
+      </table>
+    </app-card>
+  </div>
+</div>

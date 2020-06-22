@@ -1,0 +1,31 @@
+// LOGO
+
+.logo {
+  width: 100px;
+}
+
+// BOTOES DE ACAO DA INDEX
+
+.toolbar {
+  margin-top: 10px;
+
+  button:hover {
+    background-color: transparentize(#dddddd, 0.7);
+  }
+
+  .btn-hover-danger:hover {
+    background-color: transparentize(#852b2b, 0.7);
+  }
+}
+
+// *** BOTOES DE ACAO DA INDEX
+
+// BOTOES DE ACAO DO FORM
+
+.btn-submit-form {
+  a:hover {
+    cursor: pointer;
+  }
+}
+
+// *** BOTOES DE ACAO DO FORM

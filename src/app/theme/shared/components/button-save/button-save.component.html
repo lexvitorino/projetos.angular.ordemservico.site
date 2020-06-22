@@ -1,0 +1,16 @@
+<div class="btn-group mb-2 mr-2" ngbDropdown [placement]="'top-right'">
+  <button type="button" class="btn btn-primary" (click)="save()">Salvar</button>
+  <button type="button" class="btn btn-primary dropdown-toggle-split" ngbDropdownToggle><span class="sr-only">Toggle
+      Dropdown</span></button>
+  <div ngbDropdownMenu class="btn-submit-form">
+    <a class="dropdown-item" (click)="save()">Salvar</a>
+    <a class="dropdown-item" (click)="saveAndCreate()">Salvar e Novo</a>
+    <a class="dropdown-item" (click)="saveAndBack()">Salvar e Voltar</a>
+  </div>
+</div>
+<div class="btn-group mb-2 mr-2">
+  <button class="btn btn-block" (click)="back()" title="Voltar">
+    <i class="fa fa-arrow-left mr-1"></i>
+    Voltar
+  </button>
+</div>
