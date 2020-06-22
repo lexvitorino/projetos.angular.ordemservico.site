@@ -39,11 +39,11 @@ export class UsersFormComponent implements OnInit, AfterViewInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private service: UsersService,
     private validators: UsersValidators,
     private notifications: NotificationsService,
     private functions: FunctionsService,
-    private file: FileService
+    private file: FileService,
+    public service: UsersService,
   ) {
   }
 
@@ -76,7 +76,7 @@ export class UsersFormComponent implements OnInit, AfterViewInit {
           permission: this.service.data.permission,
           avatar: this.service.data.avatar
         });
-        this.imagemOriginalSrc = res.avatar.url;
+        this.imagemOriginalSrc = res.avatar.path;
       });
     }
   }
@@ -92,9 +92,11 @@ export class UsersFormComponent implements OnInit, AfterViewInit {
 
     this.service.data = Object.assign({}, this.service.data, this.formData.value);
 
-    const avatar: FileModel = await this.saveAvatar();
-    if (avatar) {
-      this.service.data.avatar_id = avatar.id;
+    if (this.imageName && this.imagemOriginalSrc !== this.imageName) {
+      const avatar: FileModel = await this.saveAvatar();
+      if (avatar) {
+        this.service.data.avatar_id = avatar.id;
+      }
     }
 
     this.service.save(this.service.data, this.isEditing).subscribe(res => {
