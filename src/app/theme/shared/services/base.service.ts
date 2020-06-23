@@ -6,7 +6,20 @@ import { ErrorService } from '../../../app.error';
 
 export abstract class BaseService<T> {
 
-  constructor(public http: HttpClient, public pathModel: string) {
+  constructor(
+    public http: HttpClient,
+    public pathModel: string
+  ) {
+  }
+
+  isSelected(data: any, success: () => any = null, error: () => any = null): void {
+    if (!data) {
+      if (error) {
+        error();
+      }
+    } else if (success) {
+      success();
+    }
   }
 
   public get(): Observable<T[]> {

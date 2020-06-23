@@ -57,7 +57,8 @@ export class UsersFormComponent implements OnInit, AfterViewInit {
       name: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       fileAvatar: [null],
-      permission: [0]
+      permission: [0],
+      subscriber_id: [null]
     });
   }
 
@@ -70,6 +71,7 @@ export class UsersFormComponent implements OnInit, AfterViewInit {
         this.service.data = res;
         this.formData.patchValue({
           id: this.service.data.id,
+          subscriber_id: this.service.data.subscriber_id,
           name: this.service.data.name,
           email: this.service.data.email,
           avatar_id: this.service.data.avatar_id,

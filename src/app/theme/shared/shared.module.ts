@@ -1,3 +1,4 @@
+import { NotificationsService } from './services/notifications.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -22,6 +23,8 @@ import { ToastComponent } from './components/toast/toast.component';
 import { ToastService } from './components/toast/toast.service';
 import { TodoCardCompleteDirective } from './components/todo/todo-card-complete.directive';
 import { TodoListRemoveDirective } from './components/todo/todo-list-remove.directive';
+import { TextMaskModule } from 'angular2-text-mask';
+import { NgBrazil } from 'ng-brazil';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -49,7 +52,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbDropdownModule,
     NgbButtonsModule,
     NgbTooltipModule,
-    ImageCropperModule
+    ImageCropperModule,
+    TextMaskModule,
+    NgBrazil
   ],
   exports: [
     CommonModule,
@@ -72,7 +77,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbDropdownModule,
     NgbButtonsModule,
     NgbTooltipModule,
-    ImageCropperModule
+    ImageCropperModule,
+    TextMaskModule,
+    NgBrazil
   ],
   declarations: [
     DataFilterPipe,

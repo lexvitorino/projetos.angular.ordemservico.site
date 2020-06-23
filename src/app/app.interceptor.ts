@@ -16,7 +16,6 @@ import { catchError } from 'rxjs/operators';
 import { AuthenticationService } from './site/authentication/authentication.service';
 import { NotificationsService } from './theme/shared/services/notifications.service';
 
-
 declare var $: any;
 
 @Injectable()
@@ -45,9 +44,20 @@ export class AppInterceptor implements HttpInterceptor {
       'Authorization': bearer
     });
 
-    const cloneReq = req.clone({ headers });
+    let cloneReq: any = null;
 
-    if (authService.isLogged() && req.url.indexOf('sessions') < 0) {
+    let hasToken = true;
+    const ignoreURLs = ['sessions', 'viacep.com.br'];
+    ignoreURLs.findIndex(c => {
+      if (req.url.indexOf(c) >= 0) {
+        hasToken = false;
+        return;
+      }
+    });
+
+    cloneReq = hasToken ? req.clone({ headers }) : req.clone();
+
+    if (authService.isLogged()) {
       if (authService.isTokenExpired()) {
         $('#re-login-dialog').modal('show');
         return EMPTY;
