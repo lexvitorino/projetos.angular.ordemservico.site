@@ -163,7 +163,7 @@ export class BreadcrumbComponent implements OnInit {
       }
     });
     this.navigationList = result;
-    this.titleService.setTitle(title + ' | Able Pro Angular 9+ Free Admin Template');
+    this.titleService.setTitle(title + ' | MI7Dev | Ordem de Serviço');
   }
 
 }
