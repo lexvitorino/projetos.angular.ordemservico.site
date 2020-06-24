@@ -1,4 +1,4 @@
-import { SubscriberService } from './../../pages/entries/subscriber/subscriber.service';
+import { SubscriberService } from './../../pages/entries/subscribers/subscribers.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';

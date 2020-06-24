@@ -3,16 +3,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MASKS, NgBrazilValidators } from 'ng-brazil';
 import { FunctionsUtils } from '../../../../../theme/shared/utils/functions-utils';
-import { CustomersService } from '../customers.service';
-import { CustomersValidators } from '../customers.validations';
+import { ServiceOrdersService } from '../service-orders.service';
+import { ServiceOrdersValidators } from '../service-orders.validations';
 import { NotificationsService } from './../../../../../theme/shared/services/notifications.service';
 
 @Component({
-  selector: 'app-customers-form',
-  templateUrl: './customers-form.component.html',
+  selector: 'app-service-orders-form',
+  templateUrl: './service-orders-form.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class CustomersFormComponent implements OnInit, AfterViewInit {
+export class ServiceOrdersFormComponent implements OnInit, AfterViewInit {
 
   formData: FormGroup;
   isEditing: boolean;
@@ -26,8 +26,8 @@ export class CustomersFormComponent implements OnInit, AfterViewInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private service: CustomersService,
-    private validators: CustomersValidators,
+    private service: ServiceOrdersService,
+    private validators: ServiceOrdersValidators,
     private notifications: NotificationsService
   ) {
   }
@@ -104,20 +104,5 @@ export class CustomersFormComponent implements OnInit, AfterViewInit {
 
   onBack() {
     this.router.navigate([this.service.stateUrl]);
-  }
-
-  getCep(): void {
-    const zipCode = this.formData.controls['zip_code'];
-    if (zipCode) {
-      const cep = zipCode.value.replace(/[^\d]+/g, '');
-      if (cep.length === 7) {
-        this.service.getCep(cep).subscribe((resp: any) => {
-          this.formData.controls['street'].setValue(resp.logradouro);
-          this.formData.controls['neighborhood'].setValue(resp.bairro);
-          this.formData.controls['city'].setValue(resp.localidade);
-          this.formData.controls['state'].setValue(resp.uf);
-        });
-      }
-    }
   }
 }

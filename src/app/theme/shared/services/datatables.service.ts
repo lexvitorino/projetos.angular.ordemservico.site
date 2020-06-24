@@ -1,5 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import * as moment from 'moment';
+import { valueOf } from 'screenfull';
+import { CurrencyUtils } from '../utils/currency-utils';
 
 declare var $: any;
 
@@ -135,7 +137,8 @@ export class DataTablesService implements OnDestroy {
       className: 'text-right',
       render: (data: any, type: any) => {
         if ((type === 'sort' || type === 'type') && data !== undefined && data !== null) {
-          return data.toLocaleString('pt-br', { minimumFractionDigits: colDecimals });
+          const value = CurrencyUtils.DecimalParaString(data);
+          return value;
         } else {
           return data;
         }

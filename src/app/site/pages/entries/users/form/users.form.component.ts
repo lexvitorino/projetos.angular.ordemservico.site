@@ -2,8 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewEncapsulation } from '@angular/co
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
-import { FunctionsService } from '../../../../../theme/shared/services/functions.service';
 import { NotificationsService } from '../../../../../theme/shared/services/notifications.service';
+import { FunctionsUtils } from '../../../../../theme/shared/utils/functions-utils';
 import { UsersService } from '../users.service';
 import { UsersValidators } from '../users.validators';
 import { FilesModel } from './../../files/files.model';
@@ -41,7 +41,6 @@ export class UsersFormComponent implements OnInit, AfterViewInit {
     private activatedRoute: ActivatedRoute,
     private validators: UsersValidators,
     private notifications: NotificationsService,
-    private functions: FunctionsService,
     private files: FilesService,
     public service: UsersService,
   ) {
@@ -65,7 +64,7 @@ export class UsersFormComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.isEditing = this.functions.isNotUndefinedOrNull(id);
+    this.isEditing = FunctionsUtils.isNotUndefinedOrNull(id);
     if (this.isEditing) {
       this.service.getById(id).subscribe(res => {
         this.service.data = res;

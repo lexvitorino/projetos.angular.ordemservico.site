@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   prefix: 'mi7os',
-  service_url: 'http://mi7dev.com.br:3334'
+  service_url: 'http://localhost:3334'
 };
 
 /*

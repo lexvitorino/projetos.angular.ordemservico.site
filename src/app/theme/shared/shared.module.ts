@@ -1,17 +1,16 @@
-import { NotificationsService } from './services/notifications.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbButtonsModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { TextMaskModule } from 'angular2-text-mask';
+import { NgBrazil } from 'ng-brazil';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { NgxCurrencyModule } from 'ngx-currency';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { LightboxModule } from 'ngx-lightbox';
 import { PerfectScrollbarConfigInterface, PerfectScrollbarModule, PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { ToastrModule } from 'ngx-toastr';
-/*import 'hammerjs';
-import 'mousetrap';
-import { GalleryModule } from '@ks89/angular-modal-gallery';*/
 import { AlertModule, BreadcrumbModule, CardModule, ModalModule } from './components';
 import { ButtonSaveComponent } from './components/button-save/button-save.component';
 import { ApexChartComponent } from './components/chart/apex-chart/apex-chart.component';
@@ -23,8 +22,6 @@ import { ToastComponent } from './components/toast/toast.component';
 import { ToastService } from './components/toast/toast.service';
 import { TodoCardCompleteDirective } from './components/todo/todo-card-complete.directive';
 import { TodoListRemoveDirective } from './components/todo/todo-list-remove.directive';
-import { TextMaskModule } from 'angular2-text-mask';
-import { NgBrazil } from 'ng-brazil';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -54,7 +51,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbTooltipModule,
     ImageCropperModule,
     TextMaskModule,
-    NgBrazil
+    NgBrazil,
+    NgxCurrencyModule
   ],
   exports: [
     CommonModule,
@@ -79,7 +77,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbTooltipModule,
     ImageCropperModule,
     TextMaskModule,
-    NgBrazil
+    NgBrazil,
+    NgxCurrencyModule
   ],
   declarations: [
     DataFilterPipe,
