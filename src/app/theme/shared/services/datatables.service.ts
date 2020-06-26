@@ -128,17 +128,18 @@ export class DataTablesService implements OnDestroy {
     };
   }
 
-  getDataDouble(colData: string, colTitle: string, colDecimals: number = 0, colWidth: string = '') {
+  getDataDouble(colData: string, colTitle: string, colDecimals: string = '', colWidth: string = '') {
     return {
       data: colData,
       title: colTitle,
       width: colWidth,
       className: 'text-right',
       render: (data: any, type: any) => {
-        if ((type === 'sort' || type === 'type') && data !== undefined && data !== null) {
+        if (type === 'sort' || type === 'type') {
+          return data;
+        } else if (data !== undefined && data !== null) {
           const pipe: CurrencyPipe = new CurrencyPipe('pt-BR');
-          let newValue: string = pipe.transform(data, 'BRL', 'symbol', '1.2-2');
-          return newValue;
+          return pipe.transform(parseFloat(data), 'BRL', 'symbol', colDecimals);
         } else {
           return data;
         }

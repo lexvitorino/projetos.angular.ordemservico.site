@@ -3,7 +3,7 @@
     <app-card cardTitle="{{ title }}" [options]="false">
       <div class="row">
         <div class="col-md-6 col-sm-12">
-          <form [formGroup]="formData">
+          <form novalidate [formGroup]="formData">
             <div class="row">
               <div class="col-lg-12">
                 <div class="form-group">
@@ -55,11 +55,12 @@
           <div *ngIf="imageName" class="row">
             <div class="col col-md-6">
               <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false"
-                [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="4 / 4" [resizeToWidth]="225" [resizeToHeight]="225"
-                [cropperMinWidth]="225" [onlyScaleDown]="true" [roundCropper]="false" [canvasRotation]="canvasRotation"
-                [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'" format="png"
-                (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
-                (cropperReady)="cropperReady($event)" (loadImageFailed)="loadImageFailed()"></image-cropper>
+                [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="4 / 4" [resizeToWidth]="225"
+                [resizeToHeight]="225" [cropperMinWidth]="225" [onlyScaleDown]="true" [roundCropper]="false"
+                [canvasRotation]="canvasRotation" [transform]="transform" [alignImage]="'left'"
+                [style.display]="showCropper ? null : 'none'" format="png" (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)"
+                (loadImageFailed)="loadImageFailed()"></image-cropper>
             </div>
             <div class="col col-md-6">
               <img [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'" />

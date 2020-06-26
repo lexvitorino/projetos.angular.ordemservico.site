@@ -34,7 +34,7 @@ export class ServiceOrdersIndexComponent implements OnInit, AfterViewInit {
         this.dataTables.getDataDateTime('order_date', 'Data', 'DD/MM/YYYY', '10%'),
         this.dataTables.getDataObject('customer', 'name', 'Cliente'),
         this.dataTables.getDataObject('support', 'name', 'Suporte'),
-        this.dataTables.getDataDouble('total_value', 'Total Ordem', 2, '10%'),
+        this.dataTables.getDataDouble('total_value', 'Total Ordem', '1.2-2', '10%'),
       ];
 
       this.dataTables.dataTable('dataTable', columns, res, (aData: any) => {
