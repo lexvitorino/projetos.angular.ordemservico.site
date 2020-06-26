@@ -57,7 +57,7 @@ registerLocaleData(localePt);
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgHttpLoaderModule.forRoot()
+    NgHttpLoaderModule.forRoot(),
   ],
   providers: [
     NavigationItem,
