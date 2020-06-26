@@ -1,7 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 import * as moment from 'moment';
-import { valueOf } from 'screenfull';
-import { CurrencyUtils } from '../utils/currency-utils';
 
 declare var $: any;
 
@@ -137,8 +136,9 @@ export class DataTablesService implements OnDestroy {
       className: 'text-right',
       render: (data: any, type: any) => {
         if ((type === 'sort' || type === 'type') && data !== undefined && data !== null) {
-          const value = CurrencyUtils.DecimalParaString(data);
-          return value;
+          const pipe: CurrencyPipe = new CurrencyPipe('pt-BR');
+          let newValue: string = pipe.transform(data, 'BRL', 'symbol', '1.2-2');
+          return newValue;
         } else {
           return data;
         }
